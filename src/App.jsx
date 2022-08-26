@@ -3,7 +3,7 @@ import { Component, useEffect, useState } from 'react';
 // import Form from 'react-jsonschema-form';
 // import FormModal from './formModal';
 import { FormBuilder, PredefinedGallery } from "@ginkgo-bioworks/react-json-schema-form-builder";
-import { mySchema1, mySchema2,json1,json2 } from './dataConfig';
+import { mySchema1, mySchema2, json1, json2 } from './dataConfig';
 // import moment from 'moment'
 // import { refeData } from './data'
 // import { mySchema1 } from './dataConfig';
@@ -17,7 +17,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            schema: '{}',
+            schema: JSON.stringify(mySchema1),
             uischema: '{}',
             formData: '{}',
             showForm: false,
@@ -27,18 +27,18 @@ class App extends Component {
         return (
             <div>
                 <FormBuilder
-            schema={this.state.schema}
-            uischema={this.state.uischema}
-            onChange={(newSchema, newUiSchema) => {
-                console.log(newSchema,newUiSchema)
-                this.setState({
-                schema: newSchema,
-                uischema: newUiSchema
-                
-              })
-            }}
-            
-          />
+                    schema={this.state.schema}
+                    uischema={this.state.uischema}
+                    onChange={(newSchema, newUiSchema) => {
+                        // console.log(newSchema, newUiSchema)
+                        this.setState({
+                            schema: newSchema,
+                            uischema: newUiSchema
+
+                        })
+                    }}
+
+                />
                 {/* <PredefinedGallery
                     schema={this.state.schema}
                     uischema={this.state.uischema}
@@ -52,17 +52,20 @@ class App extends Component {
 
 
                 <button onClick={() => {
-                //     console.log(mainBindFunction(json2,mySchema2))
-                //    this.setState({
-                //     schema: JSON.stringify(mainBindFunction(json2,mySchema2))  
-                //    })                    
+                        // console.log(mainBindFunction(json2,mySchema2))
+                       this.setState({
+                        schema: JSON.stringify(mainBindFunction(json1,mySchema1))  
+                       })                    
                     this.setState({
-                        showForm:true
-                    })  }} >Preview</button>
+                        showForm: true
+                    })
+                }} >Preview</button>
 
-                <Modal show={this.state.showForm} onHide={() => {  this.setState({
-                        showForm:false
-                    }) }} size="Xl" className="Modal-Container" >
+                <Modal show={this.state.showForm} onHide={() => {
+                    this.setState({
+                        showForm: false
+                    })
+                }} size="Xl" className="Modal-Container" >
                     <Modal.Body  >
 
                         <Form
@@ -71,7 +74,7 @@ class App extends Component {
                             onChange={(newFormData) => this.setState({ formData: newFormData.formData })}
                             formData={this.state.formData}
                             submitButtonMessage={"Submit"}
-                            // onSubmit=(()=>{})
+                        // onSubmit=(()=>{})
                         />
                     </Modal.Body>
                 </Modal >
