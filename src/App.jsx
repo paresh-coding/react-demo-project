@@ -67,7 +67,7 @@ class App extends Component {
                             onChange={(newFormData) => this.setState({ formData: newFormData.formData })}
                             formData={this.state.formData}
                             submitButtonMessage={"Submit"}
-                            onSubmit=(()=>{})
+                            // onSubmit=(()=>{})
                         />
                     </Modal.Body>
                 </Modal >
