@@ -17,9 +17,9 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            schema: JSON.stringify(mySchema2),
+            schema: '{}',
             uischema: '{}',
-            formData: {},
+            formData: '{}',
             showForm: false,
         };
     }
@@ -52,13 +52,17 @@ class App extends Component {
 
 
                 <button onClick={() => {
-                    console.log(mainBindFunction(json2,mySchema2))
-                   this.setState({
-                    schema: JSON.stringify(mainBindFunction(json2,mySchema2))  
-                   })                    
-                    this.state.showForm = true }} >Preview</button>
+                //     console.log(mainBindFunction(json2,mySchema2))
+                //    this.setState({
+                //     schema: JSON.stringify(mainBindFunction(json2,mySchema2))  
+                //    })                    
+                    this.setState({
+                        showForm:true
+                    })  }} >Preview</button>
 
-                <Modal show={this.state.showForm} onHide={() => { this.state.showForm = false }} size="Xl" className="Modal-Container" >
+                <Modal show={this.state.showForm} onHide={() => {  this.setState({
+                        showForm:false
+                    }) }} size="Xl" className="Modal-Container" >
                     <Modal.Body  >
 
                         <Form
