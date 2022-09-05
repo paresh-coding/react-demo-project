@@ -48,4 +48,34 @@ function mainBindFunction(mainObj, schema) {
     return schema
 }
 
-export default mainBindFunction
+
+function mainObj(recObj, array, key){
+    recurObject(recObj, array, key);
+    function recurObject(recObj, array, key) {
+        for (var schemaProps in recObj) {
+           
+            if (typeof recObj[schemaProps] === "object") {
+                // let obj1 = recObj[schemaProps];
+                // console.log(schemaProps);    
+                if (schemaProps === "Hardware_Templates") {
+                    console.log(schemaProps,array,key);
+                    recObj[schemaProps] = {
+                        ...recObj[schemaProps],
+                        enum: [
+                            ...array
+                        ]
+    
+                    }
+                }
+                recurObject(recObj[schemaProps])
+            }
+        }
+    }
+return recObj
+
+}
+
+
+
+
+export {mainBindFunction,mainObj}
