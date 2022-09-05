@@ -2,23 +2,23 @@ const mySchema1 = {
  "$schema": "http://json-schema.org/draft-06/schema#",
  "$ref": "#/definitions/Welcome10",
  "definitions": {
-     "Welcome10": {
-         "type": "object",
-         "additionalProperties": false,
-         "properties": {
-             "Product_Config_Hdr": {
-                 "$ref": "#/definitions/ProductConfigHdr"
+    "Welcome10": {
+             "type": "object",
+             "additionalProperties": false,
+             "properties": {
+                 "Product_Config_Hdr": {
+                     "$ref": "#/definitions/ProductConfigHdr"
+                 },
+                 "Product_Config_Body": {
+                     "$ref": "#/definitions/ProductConfigBody"
+                 }
              },
-             "Product_Config_Body": {
-                 "$ref": "#/definitions/ProductConfigBody"
-             }
+             "required": [
+                 "Product_Config_Body",
+                 "Product_Config_Hdr"
+             ],
+             "title": "Welcome10"
          },
-         "required": [
-             "Product_Config_Body",
-             "Product_Config_Hdr"
-         ],
-         "title": "Welcome10"
-     },
      "ProductConfigBody": {
          "type": "object",
          "additionalProperties": false,
@@ -44,10 +44,13 @@ const mySchema1 = {
                  "format": "integer"
              },
              "Hardware_Templates": {
-                 "type": "array",
-                 "items": {
-                     "type": "string"
-                 }
+                 "type": "string",
+                 "title": "Hardware Template",
+                "enum": [
+                    "T-FS_1-AI_1-1",
+                    "T-FS_1-AI_1-FS_9-1",
+                    "T-AI_1-FS_9-1",                    
+                ]
              },
              "Config_Attributes": {
                  "$ref": "#/definitions/ConfigAttributes"
@@ -126,7 +129,14 @@ const mySchema1 = {
          "additionalProperties": false,
          "properties": {
              "LRU": {
-                 "type": "string"
+                 "type": "string",
+                 "enum":[
+                    "FS_1",
+                    "AI_1",
+                    "FS_1",
+                    "FS_1",
+                    "AI_1",
+                 ] 
              },
              "LRU_Config_Attributes": {
                  "$ref": "#/definitions/LRUConfigAttributes"
@@ -184,6 +194,25 @@ const mySchema1 = {
      }
  }
 };
+
+
+    //  "Welcome10": {
+    //      "type": "object",
+    //      "additionalProperties": false,
+    //      "properties": {
+    //          "Product_Config_Hdr": {
+    //              "$ref": "#/definitions/ProductConfigHdr"
+    //          },
+    //          "Product_Config_Body": {
+    //              "$ref": "#/definitions/ProductConfigBody"
+    //          }
+    //      },
+    //      "required": [
+    //          "Product_Config_Body",
+    //          "Product_Config_Hdr"
+    //      ],
+    //      "title": "Welcome10"
+    //  },
 const json1 =
 {
  "Product_Config_Hdr": {
