@@ -1,8 +1,6 @@
 
 
 const mySchema1 = {
-    "$schema": "http://json-schema.org/draft-06/schema#",
-
     "definitions": {
         "ConfigSection": {
             "type": "object",
@@ -163,14 +161,14 @@ const mySchema1 = {
 const baseSchema = {
     "type": "object",
     "additionalProperties": false,
-    "properties": {
+    "definitions": {
         "PlatformConfigHdr": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
                 "id": {
                     "type": "string",
-                    "format": "integer"
+                    
                 },
                 "name": {
                     "type": "string"
@@ -206,22 +204,22 @@ const baseSchema = {
                         "properties": {
                             "Section_Id": {
                                 "type": "string",
-                                "format": "integer"
+                               
                             },
                             "Hardware_Templates": {
                                 "type": "array",
                                 "items": {
                                     "type": "string",
-                                    "default": "T-BC_-FS_9-1" /*Default value pre-populated from LRU Template*/
+                                    "default": "T-BC_-FS_9-1" 
                                 }
                             },
                             "Config_Attributes": {
                                 "type": "object",
                                 "additionalProperties": false,
                                 "properties": {
-                                    "insert_config_attributes": { /*This with assumption, values will be entered by user*/
+                                    "insert_config_attributes": { 
                                         "type": "string",
-                                        "format": "integer"
+                                      
                                     }
                                 },
                                 "required": [
@@ -274,12 +272,136 @@ const baseSchema = {
             ],
             "title": "PlatformConfigBody"
         }
+        
     },
     "required": [
         "PlatformConfigBody",
         "PlatformConfigHdr"
     ],
-    "title": "HMS" /*This schema is for HMS Product*/
+    "title": "LMS" 
+};
+
+
+const propebaseSchema = {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "PlatformConfigHdr": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                },
+                "generated-by": {
+                    "type": "string"
+                },
+                "generated-timestamp": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "generated-by",
+                "generated-timestamp",
+                "id",
+                "name",
+                "version"
+            ],
+            "title": "PlatformConfigHdr"
+        },
+        "PlatformConfigBody": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Config _sections": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "Section_Id": {
+                                "type": "string",
+                                "format": "integer"
+                            },
+                            "Hardware_Templates": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "default": "T-BC_-FS_9-1" 
+                                }
+                            },
+                            "Config_Attributes": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                    "insert_config_attributes": { 
+                                        "type": "string",
+                                        "format": "integer"
+                                    }
+                                },
+                                "required": [
+                                    "insert_config_attributes"
+                                ],
+                                "title": "ConfigAttributes"
+                            },
+                            "LRU_Config": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "LRU": {
+                                            "type": "string",
+                                            "default": "BC_03" 
+                                        },
+                                        "LRU_Config_Attributes": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "insert_LRU_Config_Attributes_1": { 
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [],
+                                            "title": "LRUConfigAttributes"
+                                        }
+                                    },
+                                    "required": [
+                                        "LRU",
+                                        "LRU_Config_Attributes"
+                                    ],
+                                    "title": "LRUConfig"
+                                }
+                            }
+                        },
+                        "required": [
+                            "Config_Attributes",
+                            "Hardware_Templates",
+                            "LRU_Config",
+                            "Section_Id"
+                        ],
+                        "title": "ConfigSection"
+                    }
+                }
+            },
+            "required": [
+                "Config _sections"
+            ],
+            "title": "PlatformConfigBody"
+        }
+    },
+    "required": [
+        "PlatformConfigBody",
+        "PlatformConfigHdr"
+    ],
+    "title": "LMS" 
 };
 
 
@@ -536,7 +658,7 @@ const json2 = {
     }
 }
 
-export { mySchema1, mySchema2, json1, json2, baseSchema }
+export { mySchema1, mySchema2, json1, json2, baseSchema ,propebaseSchema }
 
 
 

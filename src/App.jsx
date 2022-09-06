@@ -19,7 +19,7 @@ function App() {
 
 
 
-  const [schema, setSchema] = React.useState(mySchema1);
+  const [schema, setSchema] = React.useState(baseSchema);
   const [formData, setformData] = React.useState({});
   const [uischema, setUiSchema] = React.useState('{}');
   const [showModal, setShowModal] = React.useState(false);
@@ -150,7 +150,7 @@ function App() {
               setShowModal(true)
             }} >Preview</button>
 
-            {showModal ? <MainModal schema = {schema} > </MainModal> : null}
+            {/* {true ? <MainModal  > </MainModal> : null} */}
 
           </div>
         </>

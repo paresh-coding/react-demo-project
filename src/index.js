@@ -6,11 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import Ending from './kajalfile';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import MainModal from './MainModal';
 // import Subapp from './Subapp';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+{/* <MainModal></MainModal> */}
     {/* <Ending /> */}
     <App></App>
     {/* <Subapp></Subapp> */}
