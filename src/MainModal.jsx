@@ -12,7 +12,8 @@ import Form from 'react-jsonschema-form';
 import Modal from 'react-bootstrap/Modal';
 import mainBindFunction from './services';
 // propebaseSchema
-function MainModal() {
+
+function MainModal({schema,showModal}) {
     const [formData, setFomData] = useState({})
 
 const demoForm  = {
@@ -42,11 +43,11 @@ const demoForm  = {
   }
 
 
-    return (<Modal show={true}  >
+    return (
+    <Modal show={true}  >
         <Modal.Body>
-
             <Form
-                schema={propebaseSchema}
+                schema={{...schema,properties:schema.definitions}}
                 uiSchema={{}}
                 onChange={(newFormDatad) => setFomData(newFormDatad)}
                 formData={formData}

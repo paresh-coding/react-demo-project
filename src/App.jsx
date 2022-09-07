@@ -34,7 +34,7 @@ function App() {
 
   function mainObj(main, ay, k) {
     recurObject(main, ay, k);
-    
+
     function recurObject(recObj, array, key) {
       for (var schemaProps in recObj) {
 
@@ -80,7 +80,7 @@ function App() {
   }
   const handelNewSchema = () => {
     // console.log(mainObj(schema, selectedtempConf, "Hardware_Templates"))
-     setSchema(mainObj(schema));
+    setSchema(mainObj(schema));
     //  setSchema(mainObj(schema,selectedlruConf,"LRU"));
     setTimeout(() => {
       setShowBuilder(!showBuilder)
@@ -91,42 +91,9 @@ function App() {
 
   return (
     <>
-      <div className="d-flex flex-row">
-
-        <select name="template_config" style={{ fontSize: "17px" }} className="form-control rounded-0 m-1" onChange={handelTemplate}>
-          <option>Select Hardware Tamplate</option>
-          {tempConf.map((da, index) => <option value={da}>{da}</option>)}
-
-        </select>
-        <button>ADD TEMPLATE</button>
-
-
-      </div>
-      <div>
-        {selectedtempConf.map((da) => <span className="m-2"> {da}</span>)}
-      </div>
-
-
-      <div className="d-flex flex-row">
-        <select name="lru_config" style={{ fontSize: "17px" }} className="form-control rounded-0 mr-1" onChange={(e) => setselectedlruConf([...selectedlruConf, e.target.value])} >
-          <option>LRU Config</option>
-          {lruConf.map((da, index) => <option value={da}>{da}</option>)}
-
-        </select>
-        <button>ADD LRU</button>
-
-      </div>
-      <div>
-        {selectedlruConf.map((da) => <span className="m-2"> {da}</span>)}
-      </div>
 
       <div>
-        <button onClick={handelNewSchema}>
-          CREATE NEW SCHEMA
-        </button>
-      </div>
-      <div>
-        {showBuilder ? <>
+        {true ? <>
           <div>
             {/* <FormBuilder
           schema={schema}
@@ -146,23 +113,17 @@ function App() {
               }}
             />
 
-            <button onClick={() => {
+            <button className='m-auto' onClick={() => {
               setShowModal(true)
             }} >Preview</button>
 
-            {/* {true ? <MainModal  > </MainModal> : null} */}
+            {true ? <MainModal schema={schema} showModal={showModal} > </MainModal> : null}
 
           </div>
         </>
           : null}
       </div>
-
     </>
-
-
-
-
-
   );
 
 }

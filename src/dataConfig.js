@@ -167,8 +167,7 @@ const baseSchema = {
             "additionalProperties": false,
             "properties": {
                 "id": {
-                    "type": "string",
-                    
+                    "type": "string",                    
                 },
                 "name": {
                     "type": "string"
@@ -210,7 +209,7 @@ const baseSchema = {
                                 "type": "array",
                                 "items": {
                                     "type": "string",
-                                    "default": "T-BC_-FS_9-1" 
+                                    "default": "T-BC_03-FS_9-1" 
                                 }
                             },
                             "Config_Attributes": {
@@ -235,13 +234,13 @@ const baseSchema = {
                                     "properties": {
                                         "LRU": {
                                             "type": "string",
-                                            "default": "BC_03" /*Default LRU Config value pre-populated based on LRU Template*/
+                                            "default": "BC_03" 
                                         },
                                         "LRU_Config_Attributes": {
                                             "type": "object",
                                             "additionalProperties": false,
                                             "properties": {
-                                                "insert_LRU_Config_Attributes_1": { /*This with assumption, values will be entered by user*/
+                                                "insert_LRU_Config_Attributes_1": { 
                                                     "type": "string"
                                                 }
                                             },
