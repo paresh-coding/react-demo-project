@@ -29,7 +29,7 @@ function LoopingMode() {
                         for (let ar in recObj[schemaProps]["items"]) {
                             let ele = recObj[schemaProps]["items"][ar]["properties"];
                             if (ar === "0") {
-                                console.log(0)
+                                // console.log(0)
                                 ele.name = {
                                     ...ele.name,
                                     default: hard[2].split("_")[0]
@@ -45,12 +45,21 @@ function LoopingMode() {
 
                         }
                     }
+                    if (schemaProps === "HeadEndTemplateHdr") {
+                        console.log(recObj[schemaProps]);
+                         recObj[schemaProps]["properties"]["name"] = 
+                          {
+                            ... recObj[schemaProps]["properties"]["name"],
+                            default:latestConfig.HeadEndTemplateHdr.name,
+                          }
+                    
+                    }
 
                     recurObject(recObj[schemaProps])
                 }
             }
         }
-        console.log(obj);
+        // console.log(obj);
         return obj
     }
 
