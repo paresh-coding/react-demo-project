@@ -161,7 +161,7 @@ const mySchema1 = {
 const baseSchema = {
     "type": "object",
     "additionalProperties": false,
-    "definitions": {
+    "properties": {
         "PlatformConfigHdr": {
             "type": "object",
             "additionalProperties": false,
@@ -192,85 +192,86 @@ const baseSchema = {
             "title": "PlatformConfigHdr"
         },
         "PlatformConfigBody": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "Config _sections": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "additionalProperties": false,
-                        "properties": {
-                            "Section_Id": {
-                                "type": "string",
-                               
-                            },
-                            "Hardware_Templates": {
-                                "type": "array",
-                                "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "Config _sections": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "Section_Id": {
                                     "type": "string",
-                                    "default": "T-BC_03-FS_9-1" 
-                                }
-                            },
-                            "Config_Attributes": {
-                                "type": "object",
-                                "additionalProperties": false,
-                                "properties": {
-                                    "insert_config_attributes": { 
+                                   
+                                },
+                                "Hardware_Templates": {
+                                    "type": "array",
+                                    "items": {
                                         "type": "string",
-                                      
+                                        "default": "T-BC_03-FS_9-1" 
                                     }
                                 },
-                                "required": [
-                                    "insert_config_attributes"
-                                ],
-                                "title": "ConfigAttributes"
-                            },
-                            "LRU_Config": {
-                                "type": "array",
-                                "items": {
+                                "Config_Attributes": {
                                     "type": "object",
                                     "additionalProperties": false,
                                     "properties": {
-                                        "LRU": {
+                                        "insert_config_attributes": { 
                                             "type": "string",
-                                            "default": "BC_03" 
-                                        },
-                                        "LRU_Config_Attributes": {
-                                            "type": "object",
-                                            "additionalProperties": false,
-                                            "properties": {
-                                                "insert_LRU_Config_Attributes_1": { 
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "required": [],
-                                            "title": "LRUConfigAttributes"
+                                          
                                         }
                                     },
                                     "required": [
-                                        "LRU",
-                                        "LRU_Config_Attributes"
+                                        "insert_config_attributes"
                                     ],
-                                    "title": "LRUConfig"
+                                    "title": "ConfigAttributes"
+                                },
+                                "LRU_Config": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "LRU": {
+                                                "type": "string",
+                                                "default": "BC_03" 
+                                            },
+                                            "LRU_Config_Attributes": {
+                                                "type": "object",
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "insert_LRU_Config_Attributes_1": { 
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [],
+                                                "title": "LRUConfigAttributes"
+                                            }
+                                        },
+                                        "required": [
+                                            "LRU",
+                                            "LRU_Config_Attributes"
+                                        ],
+                                        "title": "LRUConfig"
+                                    }
                                 }
-                            }
-                        },
-                        "required": [
-                            "Config_Attributes",
-                            "Hardware_Templates",
-                            "LRU_Config",
-                            "Section_Id"
-                        ],
-                        "title": "ConfigSection"
+                            },
+                            "required": [
+                                "Config_Attributes",
+                                "Hardware_Templates",
+                                "LRU_Config",
+                                "Section_Id"
+                            ],
+                            "title": "ConfigSection"
+                        }
                     }
-                }
-            },
-            "required": [
-                "Config _sections"
-            ],
-            "title": "PlatformConfigBody"
-        }
+                },
+                "required": [
+                    "Config _sections"
+                ],
+                "title": "PlatformConfigBody"
+            }
+        
         
     },
     "required": [
@@ -279,6 +280,9 @@ const baseSchema = {
     ],
     "title": "LMS" 
 };
+
+// 
+
 
 
 const propebaseSchema = {
@@ -527,6 +531,7 @@ const json1 =
         ]
     }
 };
+
 const mySchema2 = {
 
     "$ref": "#/definitions/Welcome2",
