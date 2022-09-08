@@ -7,6 +7,7 @@ import Ending from './kajalfile';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import MainModal from './MainModal';
+import LoopingMode from './looping';
 // import Subapp from './Subapp';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,8 +15,9 @@ root.render(
   <React.StrictMode>
 {/* <MainModal></MainModal> */}
     {/* <Ending /> */}
-    <App></App>
+    {/* <App></App> */}
     {/* <Subapp></Subapp> */}
+   <LoopingMode></LoopingMode>
   </React.StrictMode>
 );
 
