@@ -3,7 +3,7 @@ import { Component, useEffect, useState } from 'react';
 // import Form from 'react-jsonschema-form';
 // import FormModal from './formModal';
 import { FormBuilder, PredefinedGallery } from "@ginkgo-bioworks/react-json-schema-form-builder";
-import { mySchema1, mySchema2, json1, json2 } from './dataConfig';
+import { mySchema1, mySchema2, json1, json2, json3, mySchema3, myBaseUiSchema,myBaseSchema, myBaseSchemaLatest, json4, mySchema5 } from './dataConfig';
 // import moment from 'moment'
 // import { refeData } from './data'
 // import { mySchema1 } from './dataConfig';
@@ -16,73 +16,44 @@ import mainBindFunction from './services';
 class App extends Component {
     constructor(props) {
         super(props);
+
+        console.log('myBaseUiSchema',JSON.stringify(myBaseUiSchema));
         this.state = {
-            schema: JSON.stringify(mySchema1),
-            uischema: '{}',
-            formData: '{}',
-            showForm: false,
+            schema: JSON.stringify(myBaseSchema),
+            //schema: '{}',
+           uischema:'{}',
+            //uischema: JSON.stringify(myBaseUiSchema),
+             formData: '{}',
+            // showForm: false,
         };
+        
     }
     render() {
         return (
-            <div>
-                <FormBuilder
-                    schema={this.state.schema}
-                    uischema={this.state.uischema}
-                    onChange={(newSchema, newUiSchema) => {
-                        // console.log(newSchema, newUiSchema)
-                        this.setState({
-                            schema: newSchema,
-                            uischema: newUiSchema
-
-                        })
-                    }}
-
-                />
-                {/* <PredefinedGallery
-                    schema={this.state.schema}
-                    uischema={this.state.uischema}
-                    onChange={(newSchema, newUiSchema) => {
-                        this.setState({
-                            schema: newSchema,
-                            uischema: newUiSchema
-                        })
-                    }}
-                /> */}
-
-
-                <button onClick={() => {
-                        // console.log(mainBindFunction(json2,mySchema2))
-                       this.setState({
-                        schema: JSON.stringify(mainBindFunction(json1,mySchema1))  
-                       })                    
-                    this.setState({
-                        showForm: true
-                    })
-                }} >Preview</button>
-
-                <Modal show={this.state.showForm} onHide={() => {
-                    this.setState({
-                        showForm: false
-                    })
-                }} size="Xl" className="Modal-Container" >
-                    <Modal.Body  >
-
-                        <Form
-                            schema={JSON.parse(this.state.schema)}
-                            uiSchema={JSON.parse(this.state.uischema)}
-                            onChange={(newFormData) => this.setState({ formData: newFormData.formData })}
-                            formData={this.state.formData}
-                            submitButtonMessage={"Submit"}
-                        // onSubmit=(()=>{})
-                        />
-                    </Modal.Body>
-                </Modal >
-
-
-            </div>
-
+          <div>
+            <FormBuilder
+              schema={this.state.schema}
+              uischema={this.state.uischema}
+              onChange={(newSchema, newUiSchema) => {
+                this.setState({
+                  schema: newSchema,
+                  uischema: newUiSchema
+                })
+              }}
+            />          
+              {/* <PredefinedGallery
+              schema={this.state.schema}
+              uischema={this.state.uischema}
+              onChange={(newSchema, newUiSchema) => {
+                this.setState({
+                  schema: newSchema,
+                  uischema: newUiSchema
+                })
+              }}
+            /> */}
+            
+          </div>
         );
-    }
+      }
 }
 export default App
